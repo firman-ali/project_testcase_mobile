@@ -6,7 +6,6 @@ import 'package:testcase_project/app/repository/app_repository.dart';
 import 'package:testcase_project/app/repository/app_repository_impl.dart';
 
 import '../../../utils/error_response_helper.dart';
-import '../../../utils/utils.dart';
 import '../../widgets/picked_image_dialog.dart';
 import '../../widgets/rounded_dialog.dart';
 import '../../widgets/rounded_source_image_sheet.dart';
@@ -58,8 +57,8 @@ class ReportController extends GetxController {
   void confirmAddReport() async {
     Get.dialog(
       RoundedDialog(
-        title: "Kirim Laporan dan Masukan",
-        content: "Apakah Anda yakin akan mengirim laporan dan masukan?",
+        title: "Kirim Laporan",
+        content: "Apakah Anda yakin akan mengirim laporan?",
         negativeLabelButton: "Cek Kembali",
         positiveLabelButton: "Kirim Data",
         negativeOnPressed: Get.back,
@@ -69,22 +68,6 @@ class ReportController extends GetxController {
         },
       ),
     );
-  }
-
-  Future<bool> confirmCancelAddReport() async {
-    Get.dialog(
-      RoundedDialog(
-        color: Colors.red,
-        title: "Batalkan Pembuatan",
-        content:
-            "Apakah Anda yakin akan membatalkan pembuatan laporan dan masukan?",
-        negativeLabelButton: "Tidak",
-        positiveLabelButton: "Yakin dan Batalkan",
-        negativeOnPressed: () => Utils.backPressed(backLastPage: false),
-        positiveOnPressed: Utils.backPressed,
-      ),
-    );
-    return Future.value(false);
   }
 
   void pickImageFromCamera() async {
