@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -36,7 +35,7 @@ class LoginView extends GetView<LoginController> {
                         ),
                         const SizedBox(height: 8.0),
                         Text(
-                          "Untuk masuk, pastikan Anda telah memiliki akun  di aplikasi Desa Mambal",
+                          "Untuk masuk, pastikan Anda telah memiliki akun di aplikasi",
                           style: GoogleFonts.plusJakartaSans(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
