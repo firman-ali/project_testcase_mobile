@@ -1,7 +1,7 @@
 import 'package:image_picker/image_picker.dart';
 
-import '../models/letter_response.dart';
 import '../models/login_response.dart';
+import '../models/report_response.dart';
 
 abstract class AppRepository {
   Future<LoginResponse> login({
@@ -9,7 +9,7 @@ abstract class AppRepository {
     required String password,
   });
 
-  Future<LetterResponse> getLetters({
+  Future<ReportResponse> getReports({
     int limit = 10,
     int page = 1,
     String? letterStatus,

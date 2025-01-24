@@ -1,15 +1,16 @@
 import 'dart:io';
 
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:http/http.dart' as http;
+import 'package:testcase_project/app/data/dummy.dart';
 
 import '../data/network/network.dart';
 import '../models/approve_letter_request.dart';
-import '../models/letter_response.dart';
 import '../models/login_request.dart';
 import '../models/login_response.dart';
+import '../models/report_response.dart';
 import '../utils/error_response_helper.dart';
 import '../utils/utils.dart';
 import 'app_repository.dart';
@@ -22,11 +23,7 @@ class AppRepositoryImpl implements AppRepository {
     required String nik,
     required String password,
   }) async {
-    return LoginResponse(
-      token: "123",
-      citizenName: "Admin",
-      roleId: 99, citizenId: 999, profilePictureUrl: '',
-    );
+    return DummyData.loginResponse;
     final reqBody = LoginRequest(nik: nik, password: password);
     final response = await _apiService.postResponse(
       ApiHelper.login,
@@ -45,7 +42,7 @@ class AppRepositoryImpl implements AppRepository {
   }
 
   @override
-  Future<LetterResponse> getLetters({
+  Future<ReportResponse> getReports({
     int limit = 10,
     int page = 1,
     String? letterStatus,
@@ -53,9 +50,7 @@ class AppRepositoryImpl implements AppRepository {
     DateTime? startDate,
     DateTime? endDate,
   }) async {
-    return LetterResponse( records: [
-
-    ]);
+    return DummyData.reportResponse;
     String url;
     if (direction == true) {
       url = "${ApiHelper.letter}?limit=$limit&page=$page&direction=in";
