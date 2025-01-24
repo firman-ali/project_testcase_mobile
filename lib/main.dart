@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
       builder: EasyLoading.init(),
       routingCallback: (routing) async {
         final userLoggedIn = await Get.find<PreferencesHelper>().isLoggedIn;
-        if (userLoggedIn == false && routing?.current == Routes.REPORT_APPROVAL) {
+        if (userLoggedIn == false &&
+            routing?.current == Routes.REPORT_APPROVAL) {
           Get.offAllNamed(Routes.LOGIN);
         }
       },

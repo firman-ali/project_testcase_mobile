@@ -67,7 +67,7 @@ class _RoundedTextFieldState extends State<RoundedTextField> {
       style: GoogleFonts.plusJakartaSans(
         fontSize: 14,
         fontWeight: FontWeight.w500,
-        color: Colors.blue,
+        color: Colors.black,
       ),
       decoration: InputDecoration(
         hintText: widget.hintText,

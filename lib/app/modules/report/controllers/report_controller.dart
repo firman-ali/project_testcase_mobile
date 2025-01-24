@@ -14,7 +14,6 @@ import '../../widgets/rounded_source_image_sheet.dart';
 class ReportController extends GetxController {
   ImagePicker? picker;
   List<XFile> images = [];
-  String? destination;
   bool canSubmit = false;
 
   TextEditingController? reportTitleController;
@@ -29,6 +28,11 @@ class ReportController extends GetxController {
   void onInit() {
     super.onInit();
     picker = ImagePicker();
+    reportCitizenName = TextEditingController();
+    reportCitizenAddress = TextEditingController();
+    reportCitizenEmail = TextEditingController();
+    reportCitizenNik = TextEditingController();
+    reportCitizenPhone = TextEditingController();
     reportTitleController = TextEditingController();
     reportDescController = TextEditingController();
   }
@@ -41,6 +45,11 @@ class ReportController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    reportCitizenName?.dispose();
+    reportCitizenAddress?.dispose();
+    reportCitizenEmail?.dispose();
+    reportCitizenNik?.dispose();
+    reportCitizenPhone?.dispose();
     reportTitleController?.dispose();
     reportDescController?.dispose();
     EasyLoading.dismiss();
@@ -133,7 +142,6 @@ class ReportController extends GetxController {
         reportCitizenEmail?.text.isNotEmpty == true &&
         reportTitleController?.text.isNotEmpty == true &&
         reportDescController?.text.isNotEmpty == true &&
-        destination?.isNotEmpty == true &&
         images.isNotEmpty == true) {
       canSubmit = true;
     } else {
