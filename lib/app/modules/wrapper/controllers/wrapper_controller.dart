@@ -1,6 +1,7 @@
-
 import 'package:get/get.dart';
 
+import '../../../data/shared_preference/preference_helper.dart';
+import '../../../routes/app_pages.dart';
 import '../../../utils/utils.dart';
 
 class WrapperController extends GetxController {
@@ -23,7 +24,12 @@ class WrapperController extends GetxController {
     super.onClose();
   }
 
-  void changePage(int index) {
+  void changePage(int index) async {
+    final userLoggedIn = await Get.find<PreferencesHelper>().isLoggedIn;
+    if (userLoggedIn == false && index == 2) {
+      Get.offAllNamed(Routes.LOGIN);
+      return;
+    }
     Utils.unloadNavBarController(_currentPage);
     Utils.loadNavBarBinding(index);
     _currentPage = index;

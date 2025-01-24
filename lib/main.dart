@@ -3,7 +3,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'app/data/shared_preference/preference_helper.dart';
 import 'app/routes/app_pages.dart';
 
 class MyApp extends StatelessWidget {
@@ -19,13 +18,6 @@ class MyApp extends StatelessWidget {
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),
-      routingCallback: (routing) async {
-        final userLoggedIn = await Get.find<PreferencesHelper>().isLoggedIn;
-        if (userLoggedIn == false &&
-            routing?.current == Routes.REPORT_APPROVAL) {
-          Get.offAllNamed(Routes.LOGIN);
-        }
-      },
       theme: ThemeData.light(useMaterial3: true).copyWith(
         scaffoldBackgroundColor: Colors.white,
         textTheme: GoogleFonts.plusJakartaSansTextTheme(),
