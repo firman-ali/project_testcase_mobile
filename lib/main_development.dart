@@ -14,7 +14,7 @@ import 'main.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   initServices();
-  await dotenv.load(fileName: "development.env");
+  await dotenv.load(fileName: "assets/development.env");
   Utils.initializedNavBar(bindings: AppPages.NAV_PAGE_BINDINGS);
   await initializeDateFormatting('id_ID', null);
   configLoading();
